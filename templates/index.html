@@ -1,1 +1,76 @@
-test
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>1129 V-Day</title>
+</head>
+
+<body onresize="layout_all()">
+    <style>
+        body{
+            background-color: #E6E6E6;
+        }
+        img{
+            position: absolute;
+        }
+    </style>
+
+    <canvas id="ribbon_v"></canvas>
+    <img src="https://s3-ap-southeast-1.amazonaws.com/1129vday.tw/img/major.svg" id="major"/>
+    <script>
+        function layout_all() {
+            var canvas = document.getElementById('ribbon_v');
+            var context = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            if (window.innerHeight >= window.innerWidth) {
+                document.getElementById('major').width = window.innerWidth;
+                document.getElementById('major').height = window.innerWidth;
+                document.getElementById('major').style.top = "0px";
+                document.getElementById('major').style.left = "0px";
+
+
+                context.beginPath();
+                var s = parseInt((document.getElementById('major').width)* 380 / 666);
+                context.lineWidth = parseInt((document.getElementById('major').width)* 30 / 666);
+                context.moveTo(0 - parseInt(context.lineWidth * Math.tan(Math.PI/6) / 2), s);
+                context.lineTo(parseInt(window.innerWidth / 2) + parseInt(context.lineWidth * Math.tan(Math.PI/6) / 2) - 2, parseInt((document.getElementById('major').height)* 568 / 666));
+                context.strokeStyle = '#B81C3D';
+                context.stroke();
+
+                context.beginPath();
+                context.lineWidth = parseInt((document.getElementById('major').width)* 30 / 666);
+                context.moveTo(parseInt(window.innerWidth / 2) - parseInt(context.lineWidth * Math.tan(Math.PI/6) / 2), parseInt((document.getElementById('major').height)* 568 / 666));
+                context.lineTo(window.innerWidth + parseInt(context.lineWidth * Math.tan(Math.PI/6) / 2) + 2, s);
+                context.strokeStyle = '#B81C3D';
+                context.stroke();
+            } else {
+                document.getElementById('major').height = parseInt(window.innerHeight * 548 / 666);
+                document.getElementById('major').width = parseInt(window.innerHeight * 548 / 666);
+                document.getElementById('major').style.left = parseInt((window.innerWidth - document.getElementById('major').width) / 2) + "px";
+                document.getElementById('major').style.top = "0px";
+
+                context.beginPath();
+                var s = parseInt((document.getElementById('major').height)* 568 / 666) - parseInt(window.innerWidth / 2) * Math.tan(Math.PI/6);
+                context.lineWidth = parseInt((document.getElementById('major').height)* 30 / 666);
+                context.moveTo(0 - parseInt(context.lineWidth * Math.tan(Math.PI/6) / 2), s);
+                context.lineTo(parseInt(window.innerWidth / 2) + parseInt(context.lineWidth * Math.tan(Math.PI/6) / 2) - 2, parseInt((document.getElementById('major').height)* 568 / 666));
+                context.strokeStyle = '#B81C3D';
+                context.stroke();
+
+                context.beginPath();
+                context.lineWidth = parseInt((document.getElementById('major').height)* 30 / 666);
+                context.moveTo(parseInt(window.innerWidth / 2) - parseInt(context.lineWidth * Math.tan(Math.PI/6) / 2), parseInt((document.getElementById('major').height)* 568 / 666));
+                context.lineTo(window.innerWidth + parseInt(context.lineWidth * Math.tan(Math.PI/6) / 2) + 2, s);
+                context.strokeStyle = '#B81C3D';
+                context.stroke();
+            }
+        };
+        window.onresize = function(){
+            layout_all();
+        }
+        layout_all();
+    </script>
+</body>
+
+</html>
