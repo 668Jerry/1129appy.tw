@@ -3,67 +3,125 @@
 <head>
 <meta charset="UTF-8">
 <title>1129 V-Day</title>
+
 </head>
 
 <body onresize="layout_all()">
-    <style>
+    <style type="text/css">
         body{
             background-color: #E6E6E6;
         }
         img{
             position: absolute;
         }
+        html {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 17px;
+            line-height: 1.5;
+        }
+        button{
+            position: absolute;
+            background-color: #fff;
+            color: #000;
+            border: 1px;
+            font-family: "Noto Sans", sans-serif;
+        }
+        button:hover{
+            background-color: #757575;
+        }
+        button:active{
+            background-color: #757575;
+        }
     </style>
 
     <canvas id="ribbon_v"></canvas>
     <img src="https://s3-ap-southeast-1.amazonaws.com/1129vday.tw/img/major.svg" id="major"/>
+    <a href="http://appy.tw"><button id="left_button">割闌尾計畫</button></a>
+    <a href="https://www.facebook.com/Appendectomy"><button id="right_button" >facebook</button></a>
     <script>
         function layout_all() {
             var canvas = document.getElementById('ribbon_v');
             var context = canvas.getContext('2d');
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+            canvas.width = window.innerWidth * 0.98;
+            canvas.height = window.innerHeight * 0.97;
             if (window.innerHeight >= window.innerWidth) {
                 document.getElementById('major').width = window.innerWidth;
                 document.getElementById('major').height = window.innerWidth;
                 document.getElementById('major').style.top = "0px";
                 document.getElementById('major').style.left = "0px";
 
-
+                var b = parseInt(window.innerWidth * 0.38);
+                var j = parseInt(window.innerWidth * 0.05);
+                var l = parseInt(window.innerWidth * 0.017);
+                context.fillStyle = '#B81C3D';
                 context.beginPath();
-                var s = parseInt((document.getElementById('major').width)* 380 / 666);
-                context.lineWidth = parseInt((document.getElementById('major').width)* 30 / 666);
-                context.moveTo(0 - parseInt(context.lineWidth * Math.tan(Math.PI/6) / 2), s);
-                context.lineTo(parseInt(window.innerWidth / 2) + parseInt(context.lineWidth * Math.tan(Math.PI/6) / 2) - 2, parseInt((document.getElementById('major').height)* 568 / 666));
-                context.strokeStyle = '#B81C3D';
-                context.stroke();
+                context.moveTo(0 - l, b);
+                context.lineTo(0 - l, b + j);
+                context.lineTo(parseInt(window.innerWidth / 2) - l, parseInt(b + window.innerWidth * Math.tan(Math.PI / 6) / 2) + j);
+                context.lineTo(parseInt(window.innerWidth / 2) - l, parseInt(b + window.innerWidth * Math.tan(Math.PI / 6) / 2));
+                context.closePath();
+                context.fill();
 
+                context.fillStyle = '#B81C3D';
                 context.beginPath();
-                context.lineWidth = parseInt((document.getElementById('major').width)* 30 / 666);
-                context.moveTo(parseInt(window.innerWidth / 2) - parseInt(context.lineWidth * Math.tan(Math.PI/6) / 2), parseInt((document.getElementById('major').height)* 568 / 666));
-                context.lineTo(window.innerWidth + parseInt(context.lineWidth * Math.tan(Math.PI/6) / 2) + 2, s);
-                context.strokeStyle = '#B81C3D';
-                context.stroke();
+                context.moveTo(parseInt(window.innerWidth / 2) - l, parseInt(b + window.innerWidth * Math.tan(Math.PI / 6) / 2) + j);
+                context.lineTo(parseInt(window.innerWidth / 2) - l, parseInt(b + window.innerWidth * Math.tan(Math.PI / 6) / 2));
+                context.lineTo(parseInt(window.innerWidth) - l, b);
+                context.lineTo(parseInt(window.innerWidth) - l, b + j);
+                context.closePath();
+                context.fill();
+
+                document.getElementById('left_button').style.left = parseInt(window.innerWidth * 58 / 666) + "px";
+                document.getElementById('left_button').style.top = parseInt(window.innerWidth * 620 / 666) + "px";
+                document.getElementById('left_button').style.width = parseInt(window.innerWidth * 267 / 666) + "px";
+                document.getElementById('left_button').style.height = parseInt(window.innerWidth * 56 / 666) + "px";
+                document.getElementById('left_button').style.fontSize = parseInt(window.innerWidth * 36 / 666) + "px";
+
+                document.getElementById('right_button').style.left = parseInt(window.innerWidth * 337 / 666) + "px";
+                document.getElementById('right_button').style.top = parseInt(window.innerWidth * 620 / 666) + "px";
+                document.getElementById('right_button').style.width = parseInt(window.innerWidth * 267 / 666) + "px";
+                document.getElementById('right_button').style.height = parseInt(window.innerWidth * 56 / 666) + "px";
+                document.getElementById('right_button').style.fontSize = parseInt(window.innerWidth * 36 / 666) + "px";
             } else {
-                document.getElementById('major').height = parseInt(window.innerHeight * 548 / 666);
-                document.getElementById('major').width = parseInt(window.innerHeight * 548 / 666);
+                document.getElementById('major').height = parseInt(window.innerHeight);
+                document.getElementById('major').width = parseInt(window.innerHeight);
                 document.getElementById('major').style.left = parseInt((window.innerWidth - document.getElementById('major').width) / 2) + "px";
-                document.getElementById('major').style.top = "0px";
+                document.getElementById('major').style.top = parseInt(window.innerHeight * (-0.01)) + "0px";
 
+                var b = parseInt(window.innerHeight * 0.38);
+                var j = parseInt(window.innerHeight * 0.05);
+                var a = parseInt((window.innerWidth - window.innerHeight)/2);
+                var l = parseInt(window.innerHeight * 0.017);
+                context.fillStyle = '#B81C3D';
                 context.beginPath();
-                var s = parseInt((document.getElementById('major').height)* 568 / 666) - parseInt(window.innerWidth / 2) * Math.tan(Math.PI/6);
-                context.lineWidth = parseInt((document.getElementById('major').height)* 30 / 666);
-                context.moveTo(0 - parseInt(context.lineWidth * Math.tan(Math.PI/6) / 2), s);
-                context.lineTo(parseInt(window.innerWidth / 2) + parseInt(context.lineWidth * Math.tan(Math.PI/6) / 2) - 2, parseInt((document.getElementById('major').height)* 568 / 666));
-                context.strokeStyle = '#B81C3D';
-                context.stroke();
+                context.moveTo(- l, b - a * Math.tan(Math.PI / 6));
+                context.lineTo(- l, b - a * Math.tan(Math.PI / 6) + j);
+                context.lineTo(parseInt(window.innerWidth / 2) - l, parseInt(b + window.innerHeight * Math.tan(Math.PI / 6) / 2) + j);
+                context.lineTo(parseInt(window.innerWidth / 2) - l, parseInt(b + window.innerHeight * Math.tan(Math.PI / 6) / 2));
+                context.closePath();
+                context.fill();
 
+                context.fillStyle = '#B81C3D';
                 context.beginPath();
-                context.lineWidth = parseInt((document.getElementById('major').height)* 30 / 666);
-                context.moveTo(parseInt(window.innerWidth / 2) - parseInt(context.lineWidth * Math.tan(Math.PI/6) / 2), parseInt((document.getElementById('major').height)* 568 / 666));
-                context.lineTo(window.innerWidth + parseInt(context.lineWidth * Math.tan(Math.PI/6) / 2) + 2, s);
-                context.strokeStyle = '#B81C3D';
-                context.stroke();
+                context.moveTo(parseInt(window.innerWidth / 2) - l, parseInt(b + window.innerHeight * Math.tan(Math.PI / 6) / 2) + j);
+                context.lineTo(parseInt(window.innerWidth / 2) - l, parseInt(b + window.innerHeight * Math.tan(Math.PI / 6) / 2));
+                context.lineTo(parseInt(window.innerWidth) - l, b - a * Math.tan(Math.PI / 6));
+                context.lineTo(parseInt(window.innerWidth) - l, b - a * Math.tan(Math.PI / 6) + j);
+                context.closePath();
+                context.fill();
+
+                var left_width = parseInt((window.innerWidth - window.innerHeight) / 2);
+                document.getElementById('left_button').style.left = parseInt(left_width + window.innerHeight * 58 / 666) + "px";
+                document.getElementById('left_button').style.top = parseInt(window.innerHeight * 580 / 666) + "px";
+                document.getElementById('left_button').style.width = parseInt(window.innerHeight * 267 / 666) + "px";
+                document.getElementById('left_button').style.height = parseInt(window.innerHeight * 56 / 666) + "px";
+                document.getElementById('left_button').style.fontSize = parseInt(window.innerHeight * 36 / 666) + "px";
+
+                document.getElementById('right_button').style.left = parseInt(left_width + window.innerHeight * 337 / 666) + "px";
+                document.getElementById('right_button').style.top = parseInt(window.innerHeight * 580 / 666) + "px";
+                document.getElementById('right_button').style.width = parseInt(window.innerHeight * 267 / 666) + "px";
+                document.getElementById('right_button').style.height = parseInt(window.innerHeight * 56 / 666) + "px";
+                document.getElementById('right_button').style.fontSize = parseInt(window.innerHeight * 36 / 666) + "px";
             }
         };
         window.onresize = function(){
