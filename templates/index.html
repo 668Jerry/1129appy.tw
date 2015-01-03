@@ -41,6 +41,9 @@
     <a href="http://appy.tw"><button id="left_button">割闌尾計畫</button></a>
     <a href="https://www.facebook.com/Appendectomy"><button id="right_button" >facebook</button></a>
     <script>
+        window.onresize = function(){
+            layout_all();
+        }
         function layout_all() {
             var canvas = document.getElementById('ribbon_v');
             var context = canvas.getContext('2d');
@@ -78,7 +81,8 @@
                 document.getElementById('left_button').style.width = parseInt(window.innerWidth * 267 / 666) + "px";
                 document.getElementById('left_button').style.height = parseInt(window.innerWidth * 56 / 666) + "px";
                 document.getElementById('left_button').style.fontSize = parseInt(window.innerWidth * 22 / 666) + "px";
-a
+                document.getElementById('left_button').style.paddingLeft
+                a
                 document.getElementById('right_button').style.left = parseInt(window.innerWidth * 337 / 666) + "px";
                 document.getElementById('right_button').style.top = parseInt(window.innerWidth * 620 / 666) + "px";
                 document.getElementById('right_button').style.width = parseInt(window.innerWidth * 267 / 666) + "px";
@@ -126,9 +130,6 @@ a
                 document.getElementById('right_button').style.fontSize = parseInt(window.innerHeight * 22 / 666) + "px";
             }
         };
-        window.onresize = function(){
-            layout_all();
-        }
         layout_all();
     </script>
 </body>
